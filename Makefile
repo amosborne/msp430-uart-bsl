@@ -9,7 +9,7 @@ HX	:= 	hex430
 FL 	:= 	MSP430Flasher
 AS	:= 	AStyle
 
-CFLAGS	:=	-I$(INC_DIR) -O2 -Wall -g -mcpu=MSP430
+CFLAGS	:=	-I$(INC_DIR) -O2 -Wall -g -mcpu=MSP430 -D ID=$(ID)
 LDFLAGS	:=	-L$(LNK_DIR) -T$(LNK_DIR)/msp430g2553.ld -mcpu=MSP430 \
 			-Wl,-Map,$(BLD_DIR)/main.map,--gc-sections
 
@@ -56,4 +56,4 @@ clean:
 	@echo
 	$(RM) --recursive $(OBJ_DIR)
 	$(RM) --recursive $(BLD_DIR)
-#   @$(MAKE) --directory=test clean
+#	@$(MAKE) --directory=test clean
