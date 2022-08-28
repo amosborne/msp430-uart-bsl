@@ -7,13 +7,12 @@ int main( void ) {
 
     P1DIR = BIT0;
     P2DIR = BIT3 | BIT4;
+    P2OUT = BIT4; // Turn on the red LED
 
-    if ( P1IN & BIT7 ) {
-        P2OUT = BIT4;
-        bsl_entry();
-    } else {
-        P2OUT = BIT3;
+    while ( true ) {
+        if ( !( P1IN & BIT7 ) ) { // Check if boot button is pressed
+            P2OUT = BIT3; // Turn on the green LED
+            bsl_entry();
+        }
     }
-
-    while ( true ) {}
 }
